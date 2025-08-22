@@ -1,60 +1,26 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import SearchBar from "@/components/SearchBar";
-import InfoTabs from "@/components/InfoTabs";
 import PetCard from "@/components/PetCard";
 import heroImage from "@/assets/hero-pets.jpg";
-import goldenRetriever from "@/assets/pets/golden-retriever.jpg";
-import persianCat from "@/assets/pets/persian-cat.jpg";
-import hamster from "@/assets/pets/hamster.jpg";
-import parakeet from "@/assets/pets/parakeet.jpg";
-import siameseCat from "@/assets/pets/siamese-cat.jpg";
-import labrador from "@/assets/pets/labrador.jpg";
-import rabbit from "@/assets/pets/rabbit.jpg";
-import guineaPig from "@/assets/pets/guinea-pig.jpg";
+import { petData } from "@/data/petData";
 
 const Index = () => {
-  const petBreeds = [
-    {
-      image: goldenRetriever,
-      name: "Golden Retriever",
-      description: "สุนัขใจดี ชอบเล่นน้ำ เหมาะกับครอบครัว"
-    },
-    {
-      image: persianCat,
-      name: "แมวเปอร์เซีย",
-      description: "แมวขนยาว นิสัยเงียบ ชอบนอนหลับ"
-    },
-    {
-      image: hamster,
-      name: "แฮมสเตอร์",
-      description: "สัตว์เล็ก น่ารัก เลี้ยงง่าย"
-    },
-    {
-      image: parakeet,
-      name: "นกแก้วเล็ก",
-      description: "นักสีสดใส พูดได้ เลี้ยงในกรง"
-    },
-    {
-      image: siameseCat,
-      name: "แมวสยาม",
-      description: "แมวไทย ฉลาด พูดเก่ง"
-    },
-    {
-      image: labrador,
-      name: "ลาบราดอร์",
-      description: "สุนัขซื่อสัตย์ ฉลาด เหมาะฝึกงาน"
-    },
-    {
-      image: rabbit,
-      name: "กระต่าย",
-      description: "สัตว์อ่อนโยน เงียบ กินผักผลไม้"
-    },
-    {
-      image: guineaPig,
-      name: "หนูตะเภา",
-      description: "สัตว์เลี้ยงแสนรู้ เสียงใส น่ารัก"
-    }
-  ];
+  const [searchTerm, setSearchTerm] = useState("");
+  
+  // Show first 8 pets for preview
+  const previewPets = petData.slice(0, 8);
+  
+  // Filter pets based on search term
+  const filteredPets = previewPets.filter(pet =>
+    pet.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    pet.description.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const handleSearch = (term: string) => {
+    setSearchTerm(term);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-hero">
@@ -91,37 +57,53 @@ const Index = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-8 animate-bounce-soft text-primary">
             ค้นหาสัตว์เลี้ยงของคุณ
           </h2>
-          <SearchBar />
+          <SearchBar onSearch={handleSearch} />
         </div>
       </section>
 
-      {/* Information Tabs Section */}
-      <section className="py-16 px-4">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 animate-wiggle text-secondary">
-            ข้อมูลการเลี้ยงสัตว์
-          </h2>
-          <InfoTabs />
-        </div>
-      </section>
-
-      {/* Pet Breeds Highlight */}
+      {/* Pet Breeds Preview */}
       <section className="py-16 px-4 bg-white/80 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 animate-bounce-soft text-accent">
             สายพันธุ์ยอดนิยม
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {petBreeds.map((pet, index) => (
-              <div key={index} className="animate-float" style={{ animationDelay: `${index * 0.1}s` }}>
-                <PetCard
-                  image={pet.image}
-                  name={pet.name}
-                  description={pet.description}
-                />
-              </div>
-            ))}
-          </div>
+          
+          {searchTerm && (
+            <p className="text-center mb-8 text-lg text-muted-foreground">
+              พบ {filteredPets.length} ผลลัพธ์สำหรับ "{searchTerm}"
+            </p>
+          )}
+          
+          {filteredPets.length === 0 && searchTerm && (
+            <div className="text-center py-12">
+              <p className="text-xl text-muted-foreground mb-4">
+                ไม่พบสัตว์เลี้ยงที่ค้นหา
+              </p>
+              <p className="text-muted-foreground mb-6">
+                ลองค้นหาด้วยคำอื่นหรือดูสัตว์เลี้ยงทั้งหมด
+              </p>
+              <Link to="/pets">
+                <Button variant="playful" size="lg">
+                  ดูสัตว์เลี้ยงทั้งหมด
+                </Button>
+              </Link>
+            </div>
+          )}
+
+          {filteredPets.length > 0 && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {filteredPets.map((pet, index) => (
+                <div key={pet.id} className="animate-float" style={{ animationDelay: `${index * 0.1}s` }}>
+                  <PetCard
+                    image={pet.image}
+                    name={pet.name}
+                    description={pet.description}
+                    onSeeDetails={() => window.location.href = '/pets'}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -129,18 +111,20 @@ const Index = () => {
       <section className="py-20 px-4 text-center bg-gradient-cta">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold mb-8 animate-wiggle text-white">
-            พร้อมเลี้ยงสัตว์ตัวใหม่หรือยัง?
+            ดูสัตว์เลี้ยงทั้งหมดกว่า 20 สายพันธุ์
           </h2>
           <p className="text-xl mb-8 text-white/90 animate-float">
-            มาค้นหาข้อมูลก่อนตัดสินใจ!
+            เรียนรู้ข้อมูลครบถ้วนก่อนตัดสินใจเลี้ยง!
           </p>
-          <Button 
-            variant="outline" 
-            size="xl"
-            className="bg-white/90 text-cta border-white hover:bg-white hover:scale-105 transition-all duration-300 font-semibold"
-          >
-            Explore Now
-          </Button>
+          <Link to="/pets">
+            <Button 
+              variant="outline" 
+              size="xl"
+              className="bg-white/90 text-cta border-white hover:bg-white hover:scale-105 transition-all duration-300 font-semibold"
+            >
+              Explore All Pets
+            </Button>
+          </Link>
         </div>
       </section>
 

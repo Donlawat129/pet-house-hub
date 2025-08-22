@@ -4,9 +4,10 @@ interface PetCardProps {
   image: string;
   name: string;
   description: string;
+  onSeeDetails?: () => void;
 }
 
-const PetCard = ({ image, name, description }: PetCardProps) => {
+const PetCard = ({ image, name, description, onSeeDetails }: PetCardProps) => {
   return (
     <div className="bg-card rounded-xl p-4 shadow-md pet-card-hover border border-primary-light/30">
       <div className="aspect-square rounded-lg overflow-hidden mb-3 bg-gradient-hero">
@@ -22,6 +23,7 @@ const PetCard = ({ image, name, description }: PetCardProps) => {
         variant="soft" 
         size="sm" 
         className="w-full"
+        onClick={onSeeDetails}
       >
         See Details
       </Button>
