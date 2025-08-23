@@ -3,6 +3,8 @@ import SearchBar from "@/components/SearchBar";
 import PetCard from "@/components/PetCard";
 import PetDetail from "@/components/PetDetail";
 import { petData, Pet } from "@/data/petData";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 const PetsList = () => {
   const [searchTerm, setSearchTerm] = useState("");

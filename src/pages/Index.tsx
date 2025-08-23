@@ -41,13 +41,13 @@ const Index = () => {
               className="rounded-2xl shadow-2xl animate-float"
             />
           </div>
-          <Button 
+          {/* <Button 
             variant="hero" 
             size="xl"
             className="animate-wiggle hover:animate-none"
           >
             Start Now
-          </Button>
+          </Button> */}
         </div>
       </section>
 
@@ -108,9 +108,9 @@ const Index = () => {
       </section>
 
       {/* Call to Action Section */}
-      <section className="py-20 px-4 text-center bg-gradient-cta">
+      <section className="py-20 px-4 text-center bg-gradient-secondary">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-8 animate-wiggle text-white">
+          <h2 className="text-4xl md:text-5xl font-bold mb-8 animate-float text-white">
             ดูสัตว์เลี้ยงทั้งหมดกว่า 20 สายพันธุ์
           </h2>
           <p className="text-xl mb-8 text-white/90 animate-float">
@@ -128,12 +128,12 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-8 px-4 bg-primary text-primary-foreground text-center">
+      {/* Footer
+      <footer className="py-8 px-4 bg-primary text-primary-foreground text-center bg-gradient-secondary">
         <p className="text-lg">
           🐾 Pet House - Your Complete Pet Care Guide 🐾
         </p>
-      </footer>
+      </footer> */}
     </div>
   );
 };
