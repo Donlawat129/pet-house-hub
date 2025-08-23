@@ -114,10 +114,10 @@ const Index = () => {
       <section className="py-20 px-4 text-center bg-gradient-secondary">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold mb-8 animate-float text-white">
-            ดูสัตว์เลี้ยงทั้งหมดกว่า 20 สายพันธุ์
+            ดูสัตว์เลี้ยงทั้งหมดมากกว่า 20 สายพันธุ์
           </h2>
           <p className="text-xl mb-8 text-white/90 animate-float">
-            เรียนรู้ข้อมูลครบถ้วนก่อนตัดสินใจเลี้ยง!
+            เรียนรู้ข้อมูลให้ครบถ้วนก่อนตัดสินใจเลี้ยง!
           </p>
           <Link to="/pets">
             <Button 
