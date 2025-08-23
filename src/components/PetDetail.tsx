@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { UtensilsCrossed, Home, AlertTriangle, ArrowLeft } from "lucide-react";
 import { Pet } from "@/data/petData";
+import { Link, useNavigate } from "react-router-dom";
 
 interface PetDetailProps {
   pet: Pet;
@@ -13,6 +14,7 @@ const PetDetail = ({ pet, onBack }: PetDetailProps) => {
   return (
     <div className="min-h-screen bg-gradient-hero py-8">
       <div className="max-w-4xl mx-auto px-4">
+        <Link to="/pets">
         <Button
           variant="outline"
           onClick={onBack}
@@ -21,6 +23,7 @@ const PetDetail = ({ pet, onBack }: PetDetailProps) => {
           <ArrowLeft className="w-4 h-4 mr-2" />
           Back to Pets
         </Button>
+        </Link>
 
         <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-xl">
           <div className="flex flex-col md:flex-row gap-8 mb-8">

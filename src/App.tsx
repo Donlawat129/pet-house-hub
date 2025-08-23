@@ -7,6 +7,8 @@ import Index from "./pages/Index";
 import PetsList from "./pages/PetsList";
 import NotFound from "./pages/NotFound";
 import NavBar from "@/components/NavBar";
+import PetDetailPage from "@/pages/PetDetailPage";
+
 
 const queryClient = new QueryClient();
 
@@ -16,10 +18,13 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <NavBar />
+        
+        {/* Define your routes here */}
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/pets" element={<PetsList />} />
-          
+          <Route path="/pets/:id" element={<PetDetailPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

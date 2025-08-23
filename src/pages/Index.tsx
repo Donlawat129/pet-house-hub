@@ -5,9 +5,11 @@ import SearchBar from "@/components/SearchBar";
 import PetCard from "@/components/PetCard";
 import heroImage from "@/assets/hero-pets.jpg";
 import { petData } from "@/data/petData";
+import { useNavigate } from "react-router-dom";
 
 const Index = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
   
   // Show first 8 pets for preview
   const previewPets = petData.slice(0, 8);
@@ -20,6 +22,7 @@ const Index = () => {
 
   const handleSearch = (term: string) => {
     setSearchTerm(term);
+
   };
 
   return (
@@ -32,7 +35,7 @@ const Index = () => {
             Welcome to the Pet House
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-foreground/80 animate-float">
-            ค้นหาวิธีการเลี้ยงสัตว์เลี้ยงได้ง่าย ๆ ครบทุกสายพันธุ์
+            ศึกษาและดูแลสัตว์เลี้ยงของคุณ
           </p>
           <div className="relative mb-8 max-w-md mx-auto">
             <img 
@@ -98,7 +101,7 @@ const Index = () => {
                     image={pet.image}
                     name={pet.name}
                     description={pet.description}
-                    onSeeDetails={() => window.location.href = '/pets'}
+                    onSeeDetails={() => navigate(`/pets/${pet.id}`)}
                   />
                 </div>
               ))}
@@ -118,11 +121,16 @@ const Index = () => {
           </p>
           <Link to="/pets">
             <Button 
-              variant="outline" 
               size="xl"
-              className="bg-white/90 text-cta border-white hover:bg-white hover:scale-105 transition-all duration-300 font-semibold"
+              className="hover:scale-105 transition-all
+                          text-xl font-semibold
+                          rounded-xl
+                         text-white shadow 
+                         bg-gradient-to-r from-sky-400 via-pink-400 to-green-400
+                         animate-float hover:animate-none
+                         "         
             >
-              Explore All Pets
+              สำรวจสัตว์เลี้ยงทั้งหมด
             </Button>
           </Link>
         </div>

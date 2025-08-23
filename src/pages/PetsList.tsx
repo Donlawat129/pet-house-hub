@@ -1,16 +1,15 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import SearchBar from "@/components/SearchBar";
 import PetCard from "@/components/PetCard";
-import PetDetail from "@/components/PetDetail";
 import { petData, Pet } from "@/data/petData";
-import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 const PetsList = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedPet, setSelectedPet] = useState<Pet | null>(null);
+  const navigate = useNavigate();
 
-  const filteredPets = petData.filter(pet =>
+  const filteredPets = petData.filter((pet: Pet) =>
     pet.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     pet.description.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -18,18 +17,6 @@ const PetsList = () => {
   const handleSearch = (term: string) => {
     setSearchTerm(term);
   };
-
-  const handlePetSelect = (pet: Pet) => {
-    setSelectedPet(pet);
-  };
-
-  const handleBack = () => {
-    setSelectedPet(null);
-  };
-
-  if (selectedPet) {
-    return <PetDetail pet={selectedPet} onBack={handleBack} />;
-  }
 
   return (
     <div className="min-h-screen bg-gradient-hero">
@@ -56,7 +43,7 @@ const PetsList = () => {
               พบ {filteredPets.length} ผลลัพธ์สำหรับ "{searchTerm}"
             </p>
           )}
-          
+
           {filteredPets.length === 0 && searchTerm && (
             <div className="text-center py-12">
               <p className="text-xl text-muted-foreground mb-4">
@@ -69,17 +56,17 @@ const PetsList = () => {
           )}
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {filteredPets.map((pet, index) => (
-              <div 
-                key={pet.id} 
-                className="animate-float" 
+            {filteredPets.map((pet: Pet, index: number) => (
+              <div
+                key={pet.id}
+                className="animate-float"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <PetCard
                   image={pet.image}
                   name={pet.name}
                   description={pet.description}
-                  onSeeDetails={() => handlePetSelect(pet)}
+                  onSeeDetails={() => navigate(`/pets/${pet.id}`)}
                 />
               </div>
             ))}

@@ -18,9 +18,9 @@ export default function NavBar() {
     () => [
       { to: "/", label: "หน้าแรก" },
       { to: "/pets", label: "สัตว์ทั้งหมด" },
-      { to: "/guides", label: "คู่มือเลี้ยง" },
-      { to: "/about", label: "เกี่ยวกับเรา" },
-      { to: "/contact", label: "ติดต่อ" },
+    //   { to: "/guides", label: "คู่มือเลี้ยง" },
+    //   { to: "/about", label: "เกี่ยวกับเรา" },
+    //   { to: "/contact", label: "ติดต่อ" },
     ],
     []
   );
@@ -97,7 +97,7 @@ export default function NavBar() {
 
           {/* CTA + Hamburger */}
           <div className="flex items-center gap-2">
-            <Link
+            {/* <Link
               to="/pets"
               className="
                 hidden sm:inline-flex items-center
@@ -111,7 +111,7 @@ export default function NavBar() {
               "
             >
               Explore
-            </Link>
+            </Link> */}
 
             {/* ปุ่มเปิดเมนูมือถือ */}
             <button
@@ -149,44 +149,44 @@ export default function NavBar() {
 
         {/* เมนู Mobile (slide down) */}
         {open && (
-          <div className="md:hidden px-3 pb-3">
-            <ul className="flex flex-col gap-1">
-              {links.map((l) => (
-                <li key={l.to}>
-                  <Link
-                    to={l.to}
-                    className={[
-                      "block w-full px-3 py-2 rounded-lg text-base transition",
-                      "hover:bg-white/70 hover:shadow",
-                      isActive(l.to)
-                        ? "bg-white/80 text-sky-700 shadow"
-                        : "text-slate-700"
-                    ].join(" ")}
-                    onClick={() => setOpen(false)}
-                  >
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-              <li className="pt-1">
-                <Link
-                  to="/pets"
-                  className="
-                    inline-flex items-center justify-center w-full
-                    px-4 py-2 text-sm font-semibold
-                    rounded-xl
-                    text-white shadow
-                    transition
-                    hover:opacity-95
-                    bg-gradient-to-r from-sky-400 via-pink-400 to-green-400
-                  "
-                  onClick={() => setOpen(false)}
-                >
-                  Explore
-                </Link>
-              </li>
-            </ul>
-          </div>
+            <div className="md:hidden px-3 pb-3">
+                <ul className="flex flex-col gap-1">
+                {links.map((l) => (
+                    <li key={l.to}>
+                    <Link
+                        to={l.to}
+                        className={[
+                        "block w-full px-3 py-2 rounded-lg text-base transition",
+                        "hover:bg-white/70 hover:shadow",
+                        isActive(l.to)
+                            ? "bg-white/80 text-sky-700 shadow"
+                            : "text-slate-700"
+                        ].join(" ")}
+                        onClick={() => setOpen(false)}
+                    >
+                        {l.label}
+                    </Link>
+                    </li>
+                ))}
+                    {/* <li className="pt-1">
+                        <Link
+                        to="/pets"
+                        className="
+                            inline-flex items-center justify-center w-full
+                            px-4 py-2 text-sm font-semibold
+                            rounded-xl
+                            text-white shadow
+                            transition
+                            hover:opacity-95
+                            bg-gradient-to-r from-sky-400 via-pink-400 to-green-400
+                        "
+                        onClick={() => setOpen(false)}
+                        >
+                        Explore
+                        </Link>
+                    </li> */}
+                </ul>
+            </div>
         )}
       </nav>
     </header>
