@@ -3,6 +3,7 @@ export interface Pet {
   name: string;
   description: string;
   image: string;
+  images?: string[];
   food: {
     recommended: string[];
     favorite: string[];
@@ -29,6 +30,12 @@ import siameseCat from "@/assets/pets/siamese-cat.jpg";
 import labrador from "@/assets/pets/labrador.jpg";
 import rabbit from "@/assets/pets/rabbit.jpg";
 import guineaPig from "@/assets/pets/guinea-pig.jpg";
+import SugarGlider from "@/assets/pets/Sugar Glider/Sugar-Glider.jpg";
+import SugarGlider2 from "@/assets/pets/Sugar Glider/Sugar-Glider-2.jpg";
+import SugarGlider3 from "@/assets/pets/Sugar Glider/Sugar-Glider-3.jpg";
+import FennecFox from "@/assets/pets/Fennec Fox/Fennec-Fox.jpg";
+import FennecFox2 from "@/assets/pets/Fennec Fox/Fennec-Fox-2.jpg";
+import FennecFox3 from "@/assets/pets/Fennec Fox/Fennec-Fox-3.jpg";
 
 export const petData: Pet[] = [
   {
@@ -201,12 +208,13 @@ export const petData: Pet[] = [
   },
   // Additional pets to reach 20+
   {
-    id: "budgerigar",
-    name: "นกแก้วหลงรัก",
-    description: "นกเล็กสีสวย พูดได้ เลี้ยงง่าย",
-    image: parakeet,
+    id: "Fennec Fox",
+    name: "สุนัขจิ้งจอกทะเลทราย",
+    description: "สุนัขจิ้งจอกเฟนเน็กเป็นสัตว์ขนาดเล็กในตระกูลสุนัขจิ้งจอกที่มีเอกลักษณ์โดดเด่นด้วยหูขนาดใหญ่ ช่วยระบายความร้อนและฟังเสียงเหยื่อใต้ดินได้ดี พวกมันมีนิสัยขี้เล่น ซุกซน ชอบขุดดินและสำรวจสิ่งรอบตัว เป็นสัตว์หากินกลางคืนที่กระฉับกระเฉง ส่วนเวลากลางวันมักหลบพักในโพรงเพื่อหลบความร้อน ถึงจะตัวเล็กแต่มักตื่นตัวอยู่เสมอและสามารถสร้างความผูกพันกับผู้เลี้ยงได้หากได้รับความใส่ใจอย่างเหมาะสม",
+    image: FennecFox,
+    images: [FennecFox, FennecFox2, FennecFox3],
     food: {
-      recommended: ["เมล็ดนกแก้ว", "ผลไม้สด", "ใส่วิตามิน"],
+      recommended: ["เนื้อสัตว์ (ไก่, กระต่าย, จิ้งหรีด, หนอนนก)", "อาหารแมว/สุนัขเกรดพรีเมียมที่มีโปรตีนสูง", "ไข่ต้ม, ผักและผลไม้เล็กน้อย (เช่น แอปเปิ้ล, กล้วย)"],
       favorite: ["เมล็ดฟักทอง", "แอปเปิ้ล", "สลัด"],
       forbidden: ["อะโวคาโด", "ช็อกโกแลต", "กาแฟ"]
     },
@@ -351,7 +359,8 @@ export const petData: Pet[] = [
     id: "sugar-glider",
     name: "ซูการ์ไกลเดอร์",
     description: "สัตว์บินได้ น่ารัก กิน insects",
-    image: hamster,
+    image: SugarGlider,
+    images: [SugarGlider, SugarGlider2, SugarGlider3],
     food: {
       recommended: ["แมลง", "ผลไม้", "น้ำตาล"],
       favorite: ["หนอน", "น้ำผึ้ง", "ผลไม้หวาน"],

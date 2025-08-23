@@ -8,7 +8,7 @@ import PetsList from "./pages/PetsList";
 import NotFound from "./pages/NotFound";
 import NavBar from "@/components/NavBar";
 import PetDetailPage from "@/pages/PetDetailPage";
-
+import ScrollToTop from "@/components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -19,7 +19,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <NavBar />
-        
+        <ScrollToTop />
         {/* Define your routes here */}
         <Routes>
           <Route path="/" element={<Index />} />

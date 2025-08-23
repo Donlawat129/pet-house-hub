@@ -98,7 +98,7 @@ const Index = () => {
               {filteredPets.map((pet, index) => (
                 <div key={pet.id} className="animate-float" style={{ animationDelay: `${index * 0.1}s` }}>
                   <PetCard
-                    image={pet.image}
+                    image={pet.images?.[0] || pet.image}
                     name={pet.name}
                     description={pet.description}
                     onSeeDetails={() => navigate(`/pets/${pet.id}`)}

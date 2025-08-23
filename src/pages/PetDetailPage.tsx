@@ -2,10 +2,15 @@ import { useParams, Link } from "react-router-dom";
 import { petData } from "@/data/petData";
 import PetDetail from "@/components/PetDetail";
 import { Button } from "@/components/ui/button";
+import { useEffect } from "react";  
 
 export default function PetDetailPage() {
   const { id } = useParams<{ id: string }>();
   const pet = petData.find((p) => String(p.id) === String(id));
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior }); // 👈 เพิ่ม
+  }, [id]);
 
   if (!pet) {
     return (
