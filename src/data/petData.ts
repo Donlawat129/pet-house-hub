@@ -22,7 +22,6 @@ export interface Pet {
 }
 
 // Import pet images
-import hamster from "@/assets/pets/hamster.jpg";
 import SugarGlider from "@/assets/pets/Sugar Glider/Sugar-Glider.jpg";
 import SugarGlider2 from "@/assets/pets/Sugar Glider/Sugar-Glider-2.jpg";
 import SugarGlider3 from "@/assets/pets/Sugar Glider/Sugar-Glider-3.jpg";
@@ -47,9 +46,9 @@ import SiameseCat3 from "@/assets/pets/Siamese Cat/Siamese-Cat-3.jpg";
 import Pomeranian from "@/assets/pets/Pomeranian/Pomeranian.jpg";
 import Pomeranian2 from "@/assets/pets/Pomeranian/Pomeranian-2.jpg";
 import Pomeranian3 from "@/assets/pets/Pomeranian/Pomeranian-3.jpg";
-import CHIHUAHUA from "@/assets/pets/Chihuahua/Chihuahua.jpg";
-import CHIHUAHUA2 from "@/assets/pets/Chihuahua/Chihuahua-2.jpg";
-import CHIHUAHUA3 from "@/assets/pets/Chihuahua/Chihuahua-3.jpg";
+import CHIHUAHUA from "@/assets/pets/Chihuahua/CHIHUAHUA.jpg";
+import CHIHUAHUA2 from "@/assets/pets/Chihuahua/CHIHUAHUA-2.jpg";
+import CHIHUAHUA3 from "@/assets/pets/Chihuahua/CHIHUAHUA-3.jpg";
 import PygmyRabbit from "@/assets/pets/Pygmy Rabbit/Pygmy-Rabbit.jpg";
 import PygmyRabbit2 from "@/assets/pets/Pygmy Rabbit/Pygmy-Rabbit-2.jpg";
 import PygmyRabbit3 from "@/assets/pets/Pygmy Rabbit/Pygmy-Rabbit-3.jpg";
